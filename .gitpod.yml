@@ -10,6 +10,8 @@ ports:
 tasks:
   - init: >
       (cp -n .env.example .env || true) && 
+      sudo apt-get update &&
+      sudo apt-get install python3-dev &&
       pipenv install &&
       psql -U gitpod -c 'CREATE DATABASE example;' &&
       psql -U gitpod -c 'CREATE EXTENSION unaccent;' -d example &&
